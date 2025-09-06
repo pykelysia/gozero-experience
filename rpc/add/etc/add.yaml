@@ -1,0 +1,10 @@
+Name: add.rpc
+ListenOn: 0.0.0.0:8080
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: add.rpc
+DataSource: hfc:qwer@tcp(127.0.0.1:3306)/gozeroexp
+Table: book
+Cache:
+  - Host: 127.0.0.1:6379
