@@ -3,17 +3,13 @@
 ![](https://img.shields.io/badge/Language:-golang-blue)
 ![](https://img.shields.io/badge/use:-gozero-blue)
 ![](https://img.shields.io/badge/database:-mysql-blue)
-
 ## 项目介绍
 一个体验性质的 Go-Zero 项目，包含了常见的功能模块，方便大家学习和参考。
-
 ## 项目参考
 具体的编写过程可以看[这篇博客](https://dinglz.cn/p/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/)
 
 需要注意的是这篇博客中有一些小错误：在这里指出
-
 - 1.在安装工具 `protoc-gen-go` 和 `goctl` 时，文章使用的是 `go get` 命令，而实际应使用使用 `go install` 命令（虽然用这条命令也不一定能直接安装成功）。如果使用 `go install` 命令后，工具未正常安装，建议自行上网搜索解决方案。
-
 - 2.在 "中心网关对接微服务" 中，有一步需要在 `api/internal/svc/servicecontext.go` 中添加代码,此处文章中写的是
 ```go
 type ServiceContext struct {
@@ -46,10 +42,30 @@ func NewServiceContext(c config.Config) *ServiceContext {
 	}
 }
 ```
-
 - 3.在 "rpc中处理数据库" 中，`Config` 结构体中还需要加入 `Cache` 属性，并在对应的 `etc/add(check).yaml` 文件中补充相关如下配置
 ```yaml
 Cache:
     - Host: ip:port
 ```
 否则在对应的 `scc/servicecontext.go` 文件中添加 `MySQL` 配置时会报错，提示 `Config` 结构体中没有 `Cache` 属性。
+## 快速体验
+确保具有 MySQL， etcd 和Redis 环境，并全部正常运行
+### 1. Release
+直接下载 release 版本，解压后进入 `etc` 目录，修改 `add.yaml` 和 `check.yaml` 中的数据库和缓存配置，然后分别依次运行 `add.exe`， `check.exe` 和 `api.exe` 文件即可（ `api.exe` 需要最后启动）。
+### 2. 源码编译
+执行下列指令
+```bash
+git clone https://github.com/pykelysia/gozero-experience.git
+cd gozero-experience
+go mod tidy
+```
+然后修改 `rpc/add/etc/add.yaml` 和 `rpc/check/etc/check.yaml` 中的数据库和缓存配置
+```bash
+cd rpc/add
+go build .
+cd ../check
+go build .
+cd ../../api
+go build .
+```
+然后分别依次运行 `add.exe`， `check.exe` 和 `api.exe` 文件即可（ `api.exe` 需要最后启动）。
