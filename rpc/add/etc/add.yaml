@@ -4,7 +4,7 @@ Etcd:
   Hosts:
   - 127.0.0.1:2379
   Key: add.rpc
-DataSource: hfc:qwer@tcp(127.0.0.1:3306)/gozeroexp
+DataSource: username:password@tcp(127.0.0.1:3306)/gozeroexp
 Table: book
 Cache:
   - Host: 127.0.0.1:6379
