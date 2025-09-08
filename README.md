@@ -5,6 +5,43 @@
 ![](https://img.shields.io/badge/database:-mysql-blue)
 ## 项目介绍
 一个体验性质的 Go-Zero 项目，包含了常见的功能模块，方便大家学习和参考。
+```
+gozero-experience
+├─ go.mod
+├─ go.sum
+├─ README.md
+├─ api
+│  ├─ gozeroexp.go
+│  ├─ etc
+│  └─ internal
+│     ├─ config
+│     ├─ handler
+│     ├─ logic
+│     ├─ svc
+│     └─ types
+└─ rpc
+   ├─ add
+   │  ├─ add.go
+   │  ├─ add
+   │  ├─ addclient
+   │  ├─ etc
+   │  └─ internal
+   │     ├─ config
+   │     ├─ logic
+   │     ├─ server
+   │     └─ svc
+   ├─ check
+   │  ├─ check.go
+   │  ├─ check
+   │  ├─ checkclient
+   │  ├─ etc
+   │  └─ internal
+   │     ├─ config
+   │     ├─ logic
+   │     ├─ server
+   │     └─ svc
+   └─ model
+```
 ## 项目参考
 具体的编写过程可以看[这篇博客](https://dinglz.cn/p/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/)
 
